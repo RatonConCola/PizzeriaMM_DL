@@ -1,5 +1,5 @@
 import './Navbar.css'
-import Boton from '../../../../../../../React/Modulo - React I/PizzeriaMMProject/src/components/common/Boton/Boton';
+import Boton from '/src/components/common/Boton/Boton'
 
 const Navbar = () =>{
     const total=25000;
