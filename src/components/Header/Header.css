@@ -1,0 +1,23 @@
+.h-container{
+    position: relative;
+    background-image:url(../../assets/images/Header.jpg);
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    color: white;
+}
+
+.h-container h1{
+    margin-bottom: 0px;
+}
+
+.h-line{
+    border:rgba(255, 255, 255, 0.301) solid 1px;
+    width: 80%;
+}

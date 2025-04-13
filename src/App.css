@@ -1,0 +1,22 @@
+#root {
+  width: 100%; 
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+  overflow-x: hidden; 
+}
+
+
+.grid-container{
+  display: grid;
+  grid-template-areas:
+    "navbar"
+    "home"
+    "footer";
+  grid-template-columns:1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}

@@ -1,0 +1,16 @@
+.home-container {
+    /* Ya no usamos flex aquí */
+    background-color: white;
+    padding: 32px 0;
+  }
+  
+  /* Aplica la cuadrícula al <ul> que contiene las cards */
+  .home-container ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    justify-items: center;
+  }
+  
