@@ -1,0 +1,14 @@
+.cart-container{
+    background-color: white;
+    color: black;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.button-pay{
+    background-color: black;
+    width: 128px;
+}
