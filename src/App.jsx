@@ -13,9 +13,9 @@ function App() {
     <>
     <div className='grid-container'>
      <Navbar className="navbar"></Navbar>
-     {/* <Home className="home"></Home> */}
-    {/*  <Register></Register> */}
-    <Cart></Cart>
+     <Home className="home"></Home>
+     {/*  <Register></Register> */}
+     {/* <Cart></Cart> */}
      {/* <Login></Login> */}
      <Footer className="footer"></Footer>
      </div>
