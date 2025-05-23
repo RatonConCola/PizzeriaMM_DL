@@ -1,7 +1,9 @@
 import './CardPizza.css'
+import { useState } from 'react';
 
 
-const CardPizza = ({name,price,ingredients,img}) =>{
+const CardPizza = ({id, name,price,ingredients,desc, img}) =>{
+    const [showDesc, setShowDesc] = useState(false);
 
     return(
         <>
@@ -11,16 +13,24 @@ const CardPizza = ({name,price,ingredients,img}) =>{
                 <div className='pizza-details'>
                     <p>Ingredientes: </p>
                     <ul>
-                        <li><i className="fa-solid fa-pizza-slice"></i></li>
-                        {ingredients.map((ingredient, index) => (
-                            <li key={index}>{ingredient}{index !== ingredients.length - 1 ? ', ' : ''}</li>
-                        ))}
+                        {Array.isArray(ingredients) && (
+                            <>
+                            <li><i className="fa-solid fa-pizza-slice"></i></li>
+                            {ingredients.map((ingredient, index) => (
+                                <li key={index}>
+                                {ingredient}{index !== ingredients.length - 1 ? ', ' : ''}
+                                </li>
+                            ))}
+                            </>
+                        )}
+                        {showDesc && <p className='pizza-desc'>{desc}</p>}
                     </ul>
                 </div>
 
-                <h3>Precio: ${price.toLocaleString('es-CL')}</h3>
+                <h3>Precio: ${price ? price.toLocaleString('es-CL') : 'N/A'}</h3>
                 <div className='pizza-buttons'>
-                <button className="btn1">Ver más</button>
+                <button className="btn1" onClick={() => setShowDesc(!showDesc)}>
+                    {showDesc ? 'Ver menos' : 'Ver más'}</button>
                 <button className="btn2">Añadir<i className={'fa-solid fa-cart-shopping'}></i></button>
                 </div>
             </div>

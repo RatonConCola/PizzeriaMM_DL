@@ -52,4 +52,10 @@
       justify-content: space-around;
   }
 
-  
+  .pizza-desc{
+    font-size: 12px;   /* Un poco más pequeño que el tamaño base */
+    font-style: italic;  /* Texto en cursiva */
+    color: #555;         /* Opcional: un gris suave para que no sea tan intenso */
+    border-top: 1px solid #c4c4c4;
+    padding-top: 2px;
+  }
