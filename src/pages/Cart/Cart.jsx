@@ -1,7 +1,7 @@
 import './Cart.css';
 import { pizzaCart } from "../../assets/js/pizzas";
 import { useState } from 'react';
-import CartItem from "../CartItem/CartItem";
+import CartItem from "../../components/CartItem/CartItem";
 
 const Cart = () => {
   const [cart, setCart] = useState(pizzaCart);
