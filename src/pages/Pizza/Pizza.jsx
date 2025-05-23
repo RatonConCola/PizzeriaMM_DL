@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import CardPizza from "../CardPizza/CardPizza";
+import CardPizza from "../../components/CardPizza/CardPizza";
+import "./Pizza.css"
 
 function Pizza() {
     const [pizza, setPizza] = useState([])
@@ -20,7 +21,7 @@ function Pizza() {
     return(
         <>
             <div className="pizzaz-container">
-                 <ul>
+                 <ul className="pizzaz-ul">
                     {pizza.map(p => (
                         <li key={p.id}>
                         <CardPizza

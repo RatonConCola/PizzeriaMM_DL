@@ -1,9 +1,14 @@
+import {Routes, Route} from "react-router-dom";
+
 import Navbar from './components/Navbar/Navbar'
-import Home from './components/Home/Home'
+import Home from './pages/Home/Home'
 import Footer from './components/Footer/Footer'
-import Register from './components/Register/Register'
-import Login from './components/Login/Login'
-import Cart from './components/Cart/Cart'
+import Register from "./pages/Register/Register"
+import Login from "./pages/Login/Login"
+import Cart from "./pages/Cart/Cart"
+import Pizza from "./pages/Pizza/Pizza";
+import Profile from "./pages/Profile/Profile"
+import PNotFound from "./pages/PNotFound/PNotFound"
 import './App.css'
 
 function App() {
@@ -13,12 +18,17 @@ function App() {
     <>
     <div className='grid-container'>
      <Navbar className="navbar"></Navbar>
-     <Home className="home"></Home>
-     {/*  <Register></Register> */}
-     {/* <Cart></Cart> */}
-     {/* <Login></Login> */}
+     <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/pizza" element={<Pizza/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/404" element={<PNotFound/>}/>
+     </Routes>
      <Footer className="footer"></Footer>
-     </div>
+    </div>
     </>
   )
 }
