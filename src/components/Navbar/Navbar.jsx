@@ -1,11 +1,14 @@
 import './Navbar.css';
 import BotonNav from '../common/Boton/BotonNav';
 import { Link } from 'react-router-dom';
-
+import { CartContext } from '../../context/CartContext';
+import { useContext } from 'react';
 
 const Navbar = () => {
-  const total = 25000;
-  const token = true;
+  const { cart, total } = useContext(CartContext);
+  const totalItems = cart.length; 
+
+  const token = true;  
 
   return (
     <div className="nv-container">
@@ -28,7 +31,9 @@ const Navbar = () => {
 
       <div className='nv-cart'>
         <i className='fa-solid fa-cart-shopping'></i>
-        <Link to='/cart'>Total: <span>${total.toLocaleString()}</span></Link>
+        <Link to='/cart'>
+          Total: <span>${total.toLocaleString()}</span>
+        </Link>
       </div>
     </div>
   );

@@ -1,43 +1,31 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { PizzaContext } from "../../context/PizzaContext";
 import CardPizza from "../../components/CardPizza/CardPizza";
-import "./Pizza.css"
+import "./Pizza.css";
 
 function Pizza() {
-    const [pizza, setPizza] = useState([])
+  const { pizzas, loading } = useContext(PizzaContext);
 
+  if (loading) return <p>Cargando pizzas...</p>;
 
-    const url = "http://localhost:5000/api/pizzas/"
-
-    const getData = async () => {
-        const response = await fetch(url);
-        const data = await response.json();
-        setPizza(data);
-    };
-
-    useEffect(() => {
-        getData();
-    },[])
-
-    return(
-        <>
-            <div className="pizzaz-container">
-                 <ul className="pizzaz-ul">
-                    {pizza.map(p => (
-                        <li key={p.id}>
-                        <CardPizza
-                            id={p.id}
-                            name={p.name}
-                            img={p.img}
-                            desc={p.desc}
-                            price={p.price}
-                            ingredients={p.ingredients}
-                        />
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </>
-    )
+  return (
+    <div className="pizzaz-container">
+      <ul className="pizzaz-ul">
+        {pizzas.map(p => (
+          <li key={p.id}>
+            <CardPizza
+              id={p.id}
+              name={p.name}
+              img={p.img}
+              desc={p.desc}
+              price={p.price}
+              ingredients={p.ingredients}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default Pizza;
