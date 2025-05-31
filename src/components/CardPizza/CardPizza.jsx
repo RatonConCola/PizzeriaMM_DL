@@ -1,10 +1,10 @@
 import './CardPizza.css';
 import { useState, useContext } from 'react';
-import { CartContext } from '../../context/CartContext'; // Asegúrate que la ruta sea correcta
+import { CartContext } from '../../context/CartContext'; 
+import { Link } from 'react-router-dom';
 
-const CardPizza = ({ id, name, price, ingredients, desc, img }) => {
-  const [showDesc, setShowDesc] = useState(false);
-  const { addToCart } = useContext(CartContext); // Usar la función del context
+const CardPizza = ({ id, name, price, ingredients, desc, img, showDesc = false }) => {
+  const { addToCart } = useContext(CartContext); 
 
   const handleAddToCart = () => {
     const product = { id, name, price, img };
@@ -14,7 +14,10 @@ const CardPizza = ({ id, name, price, ingredients, desc, img }) => {
   return (
     <div className='pizza-container'>
       <img src={img} alt="pizza" />
-      <h3>Pizza {name}</h3>
+      <Link to={`/pizza/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <h3>Pizza {name}</h3>
+      </Link>
+
       <div className='pizza-details'>
         <p>Ingredientes:</p>
         <ul>
@@ -28,18 +31,21 @@ const CardPizza = ({ id, name, price, ingredients, desc, img }) => {
               ))}
             </>
           )}
-          {showDesc && <p className='pizza-desc'>{desc}</p>}
         </ul>
       </div>
       <h3>Precio: ${price ? price.toLocaleString('es-CL') : 'N/A'}</h3>
-      <div className='pizza-buttons'>
-        <button className="btn1" onClick={() => setShowDesc(!showDesc)}>
-          {showDesc ? 'Ver menos' : 'Ver más'}
-        </button>
+       <div className='pizza-buttons'>
+        {!showDesc && (
+          <Link to={`/pizza/${id}`} className="btn1">
+            Ver más
+          </Link>
+        )}
+
         <button className="btn2" onClick={handleAddToCart}>
           Añadir <i className="fa-solid fa-cart-shopping"></i>
         </button>
       </div>
+          {showDesc && <p className="pizza-desc">{desc}</p>}
     </div>
   );
 };

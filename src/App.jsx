@@ -9,6 +9,10 @@ import Cart from "./pages/Cart/Cart"
 import Pizza from "./pages/Pizza/Pizza";
 import Profile from "./pages/Profile/Profile"
 import PNotFound from "./pages/PNotFound/PNotFound"
+import PizzaDetail from './pages/PizzaDetail/PizzaDetail';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+
+
 import './App.css'
 
 function App() {
@@ -24,7 +28,8 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/pizza" element={<Pizza/>}/>
-        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/pizza/:id" element={<PizzaDetail />} />
+        <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>}/>
         <Route path="/404" element={<PNotFound/>}/>
      </Routes>
      <Footer className="footer"></Footer>
