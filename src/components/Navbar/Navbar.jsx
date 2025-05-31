@@ -2,13 +2,15 @@ import './Navbar.css';
 import BotonNav from '../common/Boton/BotonNav';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { UserContext } from '../../context/UserContext';
 import { useContext } from 'react';
 
 const Navbar = () => {
   const { cart, total } = useContext(CartContext);
+  const { token, logout } = useContext(UserContext);
+  
   const totalItems = cart.length; 
 
-  const token = true;  
 
   return (
     <div className="nv-container">
@@ -19,7 +21,10 @@ const Navbar = () => {
         {token ? (
           <>
             <BotonNav to='/profile' icon='fa-solid fa-unlock' menuOption='Profile' />
-            <BotonNav to='/404' icon='fa-solid fa-lock' menuOption='Logout' />
+            <li onClick={logout} className="button-link">
+              <i className='fa-solid fa-lock'></i> Logout
+            </li>
+
           </>
         ) : (
           <>

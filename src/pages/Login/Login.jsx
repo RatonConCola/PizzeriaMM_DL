@@ -1,11 +1,17 @@
-import { use, useState } from 'react';
-import './Login.css'
+import { useContext, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
+
 
 
 const Login = () =>{
 
     const [logEmail, setLogEmail] = useState('');
     const [logPassword, setLogPassword] = useState('');
+    
+    const { token } = useContext(UserContext);
+    if (token) return <Navigate to="/" />;
+
 
     const handleSubmit = (e) =>{
         e.preventDefault();

@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import './Register.css'
+import { useContext, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 
 const Register = () =>{
@@ -7,6 +8,9 @@ const Register = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const { token } = useContext(UserContext);
+        if (token) return <Navigate to="/" />;
+
 
 
     const handleSubmit = (e) => {

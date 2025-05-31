@@ -35,3 +35,16 @@
 .nv-cart a{
     color: skyblue;
 }
+
+.button-link {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}

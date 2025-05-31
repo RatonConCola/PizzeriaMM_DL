@@ -4,16 +4,19 @@ import './index.css'
 import {BrowserRouter} from "react-router-dom";
 import CartProvider from './context/CartContext.jsx';
 import PizzaProvider from './context/PizzaContext.jsx';
+import { UserProvider } from './context/UserContext' 
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <PizzaProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </PizzaProvider>
+     <BrowserRouter>
+      <UserProvider> 
+        <PizzaProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </PizzaProvider>
+      </UserProvider>
     </BrowserRouter>
   </StrictMode>
 )
