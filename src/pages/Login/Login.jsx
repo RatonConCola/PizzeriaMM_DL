@@ -1,44 +1,63 @@
 import { useContext, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
+import "./Login.css"
 
+const Login = () => {
+  const [logEmail, setLogEmail] = useState('');
+  const [logPassword, setLogPassword] = useState('');
+  const [error, setError] = useState('');
 
+  const { token, login } = useContext(UserContext);
+  const navigate = useNavigate();
 
-const Login = () =>{
+  if (token) return <Navigate to="/" />;
 
-    const [logEmail, setLogEmail] = useState('');
-    const [logPassword, setLogPassword] = useState('');
-    
-    const { token } = useContext(UserContext);
-    if (token) return <Navigate to="/" />;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-
-        if (!logEmail || !logPassword){
-            alert('Error: Todos los campos son obligatorios');
-        } else if (logPassword.length < 6){
-            alert('Error: Password debe tener mas de 6 caracteres');
-        } else{
-            alert('Éxito: Ingreso completado');
-        }
+    if (!logEmail || !logPassword) {
+      alert('Error: Todos los campos son obligatorios');
+      return;
     }
 
-    return(
-        <>
-            <section className='login'>
-                <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>
-                    <label htmlFor="">Email</label>
-                    <input type="email" placeholder='Enter your email' value={logEmail} onChange={(e)=> setLogEmail(e.target.value)} />
-                    <label htmlFor="">Password</label>
-                    <input type="text" placeholder='Enter your password'  value={logPassword} onChange={(e)=> setLogPassword(e.target.value)} />
-                    <button>Login</button>
-                </form>
-            </section>
-        </>    
-    );
+    if (logPassword.length < 6) {
+      alert('Error: Password debe tener más de 6 caracteres');
+      return;
+    }
+
+    const success = await login({ email: logEmail, password: logPassword });
+
+    if (success) {
+      navigate('/profile');
+    } else {
+      setError('Credenciales inválidas.');
+    }
+  };
+
+  return (
+    <section className="login">
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={logEmail}
+          onChange={(e) => setLogEmail(e.target.value)}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Enter your password"
+          value={logPassword}
+          onChange={(e) => setLogPassword(e.target.value)}
+        />
+        <button>Login</button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </form>
+    </section>
+  );
 };
 
 export default Login;
