@@ -23,15 +23,15 @@ function App() {
     <div className='grid-container'>
      <Navbar className="navbar"></Navbar>
      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="/pizza" element={<Pizza/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+        <Route path="/pizza" element={<Pizza />} />
         <Route path="/pizza/:id" element={<PizzaDetail />} />
-        <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>}/>
-        <Route path="/404" element={<PNotFound/>}/>
-     </Routes>
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/404" element={<PNotFound />} />
+    </Routes>
      <Footer className="footer"></Footer>
     </div>
     </>
